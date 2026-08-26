@@ -1,0 +1,25 @@
+.auth-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.login,
+.register {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.login {
+    color: #00d084;
+}
+
+.register {
+    color: #a855f7;
+}
+
+.login:hover,
+.register:hover {
+    opacity: 0.8;
+}

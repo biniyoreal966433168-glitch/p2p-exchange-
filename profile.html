@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>P2P Exchange - User</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #090d12;
+      color: white;
+    }
+
+    /* Header */
+    header {
+      background: #111820;
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #26313d;
+    }
+
+    .logo {
+      font-size: 21px;
+      font-weight: bold;
+    }
+
+    .dashboard {
+      color: #00d68f;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* Main */
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 30px 18px;
+    }
+
+    .profile-card {
+      background: #111923;
+      border: 1px solid #26313d;
+      border-radius: 18px;
+      padding: 30px 22px;
+    }
+
+    /* Profile */
+    .profile {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .avatar {
+      width: 85px;
+      height: 85px;
+      margin: auto;
+      border-radius: 50%;
+      background: #00d68f;
+      color: #06100c;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 36px;
+    }
+
+    .profile h1 {
+      margin: 15px 0 5px;
+    }
+
+    .username {
+      color: #9da7b5;
+    }
+
+    /* Information */
+    .info {
+      border-top: 1px solid #26313d;
+      padding: 18px 0;
+
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .label {
+      color: #9da7b5;
+    }
+
+    .value {
+      font-weight: bold;
+      text-align: right;
+    }
+
+    .active {
+      color: #00d68f;
+    }
+
+    .balance {
+      color: #00d68f;
+      font-size: 18px;
+    }
+
+    /* Logout */
+    .logout {
+      width: 100%;
+      padding: 15px;
+      margin-top: 20px;
+
+      border: none;
+      border-radius: 10px;
+
+      background: #242d39;
+      color: white;
+
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .logout:hover {
+      background: #303b48;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+
+    <div class="logo">
+      🇪🇹 P2P Exchange
+    </div>
+
+    <a href="p2p-dashboard.html" class="dashboard">
+      Dashboard
+    </a>
+
+  </header>
+
+
+  <!-- USER PAGE -->
+  <main class="container">
+
+    <div class="profile-card">
+
+      <!-- PROFILE -->
+      <div class="profile">
+
+        <div class="avatar">
+          👤
+        </div>
+
+        <h1>User01</h1>
+
+        <div class="username">
+          P2P Trader
+        </div>
+
+      </div>
+
+
+      <!-- EMAIL -->
+      <div class="info">
+
+        <span class="label">
+          📧 Email
+        </span>
+
+        <span class="value">
+          user@example.com
+        </span>
+
+      </div>
+
+
+      <!-- ACCOUNT STATUS -->
+      <div class="info">
+
+        <span class="label">
+          Account Status
+        </span>
+
+        <span class="value active">
+          ● Active
+        </span>
+
+      </div>
+
+
+      <!-- USDT BALANCE -->
+      <div class="info">
+
+        <span class="label">
+          💰 USDT Balance
+        </span>
+
+        <span class="value balance">
+          0.00 USDT
+        </span>
+
+      </div>
+
+
+      <!-- LOGOUT -->
+      <button class="logout" onclick="logout()">
+        🚪 Logout
+      </button>
+
+    </div>
+
+  </main>
+
+
+  <script>
+
+    function logout() {
+
+      // Later you can also destroy the server session here.
+
+      window.location.href = "index.html";
+
+    }
+
+  </script>
+
+</body>
+</html>

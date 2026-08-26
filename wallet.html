@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>P2P Wallet</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #0b0f14;
+      color: white;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #111820;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #202a35;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .home {
+      color: #00d084;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .balance {
+      background: #111820;
+      border: 1px solid #202a35;
+      border-radius: 14px;
+      padding: 25px;
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .balance p {
+      color: #9aa4b2;
+      margin-bottom: 10px;
+    }
+
+    .balance h1 {
+      font-size: 32px;
+      margin-bottom: 5px;
+    }
+
+    .currency {
+      color: #00d084;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    button {
+      flex: 1;
+      padding: 13px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    .deposit {
+      background: #00d084;
+      color: #001b11;
+    }
+
+    .withdraw {
+      background: #222b35;
+      color: white;
+    }
+
+    .card {
+      background: #111820;
+      border: 1px solid #202a35;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 15px;
+    }
+
+    .card h2 {
+      margin-bottom: 18px;
+    }
+
+    .asset {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 0;
+      border-bottom: 1px solid #202a35;
+    }
+
+    .asset:last-child {
+      border-bottom: none;
+    }
+
+    .amount {
+      text-align: right;
+    }
+
+    .amount small {
+      display: block;
+      color: #9aa4b2;
+      margin-top: 4px;
+    }
+
+    .transaction {
+      display: flex;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid #202a35;
+    }
+
+    .transaction:last-child {
+      border-bottom: none;
+    }
+
+    .received {
+      color: #00d084;
+    }
+
+    .sent {
+      color: #ff6b6b;
+    }
+
+    #message {
+      text-align: center;
+      color: #00d084;
+      margin: 15px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🇪🇹 P2P Wallet</div>
+  <a class="home" href="index.html">Home</a>
+</header>
+
+<div class="container">
+
+  <!-- Total Balance -->
+  <div class="balance">
+    <p>Total Balance</p>
+    <h1 id="totalBalance">10,000 ETB</h1>
+    <span class="currency">Available</span>
+
+    <div class="buttons">
+      <button class="deposit" onclick="deposit()">
+        Deposit
+      </button>
+
+      <button class="withdraw" onclick="withdraw()">
+        Withdraw
+      </button>
+    </div>
+  </div>
+
+  <!-- Assets -->
+  <div class="card">
+    <h2>My Assets</h2>
+
+    <div class="asset">
+      <div>
+        <strong>🇪🇹 ETB</strong>
+      </div>
+
+      <div class="amount">
+        <strong>10,000</strong>
+        <small>ETB</small>
+      </div>
+    </div>
+
+    <div class="asset">
+      <div>
+        <strong>💵 USDT</strong>
+      </div>
+
+      <div class="amount">
+        <strong>100</strong>
+        <small>USDT</small>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Transactions -->
+  <div class="card">
+    <h2>Recent Transactions</h2>
+
+    <div class="transaction">
+      <div>
+        <strong>USDT Received</strong>
+        <small>Today</small>
+      </div>
+
+      <strong class="received">+50 USDT</strong>
+    </div>
+
+    <div class="transaction">
+      <div>
+        <strong>USDT Sent</strong>
+        <small>Yesterday</small>
+      </div>
+
+      <strong class="sent">-20 USDT</strong>
+    </div>
+
+    <div class="transaction">
+      <div>
+        <strong>Deposit</strong>
+        <small>Yesterday</small>
+      </div>
+
+      <strong class="received">+5,000 ETB</strong>
+    </div>
+
+  </div>
+
+  <div id="message"></div>
+
+</div>
+
+<script>
+
+  function deposit() {
+    document.getElementById("message").innerText =
+      "Demo: Deposit page coming next.";
+  }
+
+  function withdraw() {
+    document.getElementById("message").innerText =
+      "Demo: Withdraw page coming next.";
+  }
+
+</script>
+
+</body>
+</html>

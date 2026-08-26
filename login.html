@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>P2P Exchange - Login</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: #0b0f14;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .login-box {
+      width: 100%;
+      max-width: 400px;
+      background: #111820;
+      border: 1px solid #202a35;
+      border-radius: 14px;
+      padding: 30px 25px;
+    }
+
+    .logo {
+      text-align: center;
+      font-size: 25px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #9aa4b2;
+      margin-bottom: 28px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      color: #d9e0e7;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 18px;
+      border: 1px solid #303b48;
+      border-radius: 8px;
+      background: #0b0f14;
+      color: white;
+      font-size: 15px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #00d084;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background: #00d084;
+      color: #001b11;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .login-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    #message {
+      text-align: center;
+      margin-top: 15px;
+      min-height: 20px;
+    }
+
+    .register {
+      text-align: center;
+      margin-top: 22px;
+      color: #9aa4b2;
+    }
+
+    .register a {
+      color: #00d084;
+      text-decoration: none;
+    }
+
+    .back {
+      display: block;
+      text-align: center;
+      margin-top: 18px;
+      color: #9aa4b2;
+      text-decoration: none;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-box">
+
+    <div class="logo">🇪🇹 P2P Exchange</div>
+
+    <p class="subtitle">Login to your account</p>
+
+    <form id="loginForm">
+
+      <label for="email">Email or Username</label>
+
+      <input
+        type="text"
+        id="email"
+        placeholder="Enter email or username"
+        autocomplete="username"
+        required
+      >
+
+      <label for="password">Password</label>
+
+      <input
+        type="password"
+        id="password"
+        placeholder="Enter password"
+        autocomplete="current-password"
+        required
+      >
+
+      <button
+        class="login-btn"
+        id="loginButton"
+        type="submit"
+      >
+        Login
+      </button>
+
+    </form>
+
+    <p id="message"></p>
+
+    <div class="register">
+      Don't have an account?
+      <a href="register.html">Register</a>
+    </div>
+
+    <a class="back" href="index.html">
+      ← Back to home
+    </a>
+
+  </div>
+
+  <script>
+
+    const loginForm = document.getElementById("loginForm");
+    const loginButton = document.getElementById("loginButton");
+    const message = document.getElementById("message");
+
+    loginForm.addEventListener("submit", async function(event) {
+
+      event.preventDefault();
+
+      const emailOrUsername =
+        document.getElementById("email").value.trim();
+
+      const password =
+        document.getElementById("password").value;
+
+      if (!emailOrUsername || !password) {
+        message.innerText = "Please enter your login details.";
+        return;
+      }
+
+      loginButton.disabled = true;
+      loginButton.innerText = "Logging in...";
+      message.innerText = "";
+
+      try {
+
+        const response = await fetch("/api/auth/login", {
+
+          method: "POST",
+
+          headers: {
+            "Content-Type": "application/json"
+          },
+
+          body: JSON.stringify({
+            emailOrUsername: emailOrUsername,
+            password: password
+          })
+
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+
+          message.innerText =
+            data.message || "Login failed.";
+
+          loginButton.disabled = false;
+          loginButton.innerText = "Login";
+
+          return;
+        }
+
+        // Save user information for the current frontend.
+        // This is NOT the final production authentication method.
+        localStorage.setItem(
+          "user",
+          JSON.stringify(data.user)
+        );
+
+        localStorage.setItem(
+          "loggedIn",
+          "true"
+        );
+
+        message.innerText = "Login successful!";
+
+        setTimeout(function() {
+
+          window.location.href =
+            "p2p-dashboard.html";
+
+        }, 500);
+
+      } catch (error) {
+
+        console.error(error);
+
+        message.innerText =
+          "Unable to connect to the server.";
+
+        loginButton.disabled = false;
+        loginButton.innerText = "Login";
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>

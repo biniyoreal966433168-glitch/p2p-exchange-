@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>P2P Exchange</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #090d12;
+      color: white;
+    }
+
+    header {
+      background: #111820;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .links a {
+      margin-left: 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .login {
+      color: #00d68f;
+    }
+
+    .register {
+      color: #4da3ff;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 70px 20px 40px;
+    }
+
+    h1 {
+      font-size: 42px;
+    }
+
+    .subtitle {
+      color: #9da7b5;
+      font-size: 19px;
+    }
+
+    .buttons {
+      margin-top: 35px;
+    }
+
+    button {
+      padding: 16px 45px;
+      margin: 8px;
+      border: none;
+      border-radius: 10px;
+      font-size: 17px;
+      cursor: pointer;
+    }
+
+    .buy {
+      background: #00d68f;
+      color: #06100c;
+    }
+
+    .sell {
+      background: #242d39;
+      color: white;
+    }
+
+    .offers {
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .card {
+      background: #111820;
+      border: 1px solid #26313d;
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 15px;
+    }
+
+    .seller {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 0;
+      color: #b7c0cc;
+    }
+
+    .trade {
+      width: 100%;
+      background: #00d68f;
+      color: #06100c;
+      font-weight: bold;
+      margin: 10px 0 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+
+    <div class="logo">
+      🇪🇹 P2P Exchange
+    </div>
+
+    <div class="links">
+      <a href="login.html" class="login">Login</a>
+      <a href="register.html" class="register">Register</a>
+    </div>
+
+  </header>
+
+
+  <section class="hero">
+
+    <h1>Buy & Sell Crypto P2P</h1>
+
+    <p class="subtitle">
+      Trade directly with other users.
+    </p>
+
+    <div class="buttons">
+
+      <button class="buy" onclick="goToTrade()">
+        Buy USDT
+      </button>
+
+      <button class="sell" onclick="goToTrade()">
+        Sell USDT
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <section class="offers">
+
+    <h2>USDT Offers</h2>
+
+    <div class="card">
+
+      <div class="seller">
+        👤 Trader01
+      </div>
+
+      <div class="row">
+        <span>Price</span>
+        <strong>190 ETB / USDT</strong>
+      </div>
+
+      <div class="row">
+        <span>Available</span>
+        <span>500 USDT</span>
+      </div>
+
+      <div class="row">
+        <span>Payment</span>
+        <span>Bank Transfer</span>
+      </div>
+
+      <button class="trade" onclick="goToTrade()">
+        Trade
+      </button>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="seller">
+        👤 CryptoUser
+      </div>
+
+      <div class="row">
+        <span>Price</span>
+        <strong>198 ETB / USDT</strong>
+      </div>
+
+      <div class="row">
+        <span>Available</span>
+        <span>10,000 USDT</span>
+      </div>
+
+      <div class="row">
+        <span>Payment</span>
+        <span>Telebirr</span>
+      </div>
+
+      <button class="trade" onclick="goToTrade()">
+        Trade
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <script>
+    function goToTrade() {
+
+      const loggedIn = localStorage.getItem("loggedIn");
+
+      if (loggedIn === "true") {
+
+        window.location.href = "trade.html";
+
+      } else {
+
+        window.location.href = "login.html";
+
+      }
+
+    }
+  </script>
+
+</body>
+
+</html>
+
+<a href="./login.html">Login</a>
+<a href="./register.html">Register</a>
